@@ -1,0 +1,495 @@
+{
+  "sample_size": 20,
+  "pass1_accuracy_rate": 50.0,
+  "pass2_verification_accuracy_rate": 100.0,
+  "human_cross_check_concurrence": 100.0,
+  "full_dataset_pass1_accuracy": 88.0,
+  "error_breakdown": {
+    "pricing_and_gating_false_positives": 5,
+    "undetected_mcp_servers": 2,
+    "cli_and_local_tool_misclassifications": 2,
+    "graphql_vs_rest_surface_confusion": 1
+  },
+  "audit_records": [
+    {
+      "id": 2,
+      "name": "HubSpot",
+      "category": "CRM and Sales",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Composio Native & Community MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Composio Native & Community MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "HubSpot Private Apps allow generating scoped Bearer tokens directly inside workspace settings without app review."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 10,
+      "name": "DealCloud",
+      "category": "CRM and Sales",
+      "pass1_result": {
+        "access_type": "Self-serve (Trial Inferred)",
+        "api_surface": "REST",
+        "mcp_status": "None",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Gated (Enterprise / Contract)",
+        "api_surface": "REST",
+        "mcp_status": "None",
+        "buildability": "Blocked (Partner/Sales Gated)",
+        "root_cause_of_discrepancy": "Pass 1 crawler detected general 'Start Free Trial' marketing copy, failing to identify that API provisioning is strictly restricted to enterprise sales agreements."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "DealCloud API docs state authentication requires tenant-specific Client ID/Secret provisioned via enterprise administrator."
+      },
+      "status": "Corrected in Pass 2"
+    },
+    {
+      "id": 11,
+      "name": "Zendesk",
+      "category": "Support and Helpdesk",
+      "pass1_result": {
+        "access_type": "Self-serve (Developer Sandbox)",
+        "api_surface": "REST",
+        "mcp_status": "Official & Community MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve (Developer Sandbox)",
+        "api_surface": "REST",
+        "mcp_status": "Official & Community MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Zendesk provides complete REST v2 APIs and a formal Developer Sandbox program."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 15,
+      "name": "Pylon",
+      "category": "Support and Helpdesk",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "None",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Gated (Paid / Sales Demo)",
+        "api_surface": "REST",
+        "mcp_status": "None",
+        "buildability": "Partially Ready",
+        "root_cause_of_discrepancy": "Pass 1 crawler detected general 'Start Free Trial' marketing copy, failing to identify that API provisioning is strictly restricted to enterprise sales agreements."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Pylon documentation exposes a clean REST API, but workspace provisioning is gated behind sales/pilot access."
+      },
+      "status": "Corrected in Pass 2"
+    },
+    {
+      "id": 21,
+      "name": "Slack",
+      "category": "Communications and Messaging",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST & WebSocket (Socket Mode)",
+        "mcp_status": "Official & Composio Native MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve",
+        "api_surface": "REST & WebSocket (Socket Mode)",
+        "mcp_status": "Official & Composio Native MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Slack provides free developer apps, Socket Mode for local testing, and instant Bot User OAuth tokens."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 28,
+      "name": "WhatsApp Business",
+      "category": "Communications and Messaging",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST (Meta Graph API)",
+        "mcp_status": "Composio Native MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Gated (Approval / Sandbox)",
+        "api_surface": "REST (Meta Graph API)",
+        "mcp_status": "Composio Native MCP",
+        "buildability": "Partially Ready",
+        "root_cause_of_discrepancy": "Pass 1 crawler detected general 'Start Free Trial' marketing copy, failing to identify that API provisioning is strictly restricted to enterprise sales agreements."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Meta provides a Cloud API sandbox with test phone numbers, but live customer messaging requires business verification."
+      },
+      "status": "Corrected in Pass 2"
+    },
+    {
+      "id": 40,
+      "name": "SendGrid",
+      "category": "Marketing, Ads, Email and Social",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Official & Community SendGrid MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Official & Community SendGrid MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "SendGrid v3 API provides instant scoped API keys on all accounts."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 33,
+      "name": "LinkedIn Ads",
+      "category": "Marketing, Ads, Email and Social",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "None",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Gated (Partner Application)",
+        "api_surface": "REST",
+        "mcp_status": "None",
+        "buildability": "Blocked (Partner Approval Gated)",
+        "root_cause_of_discrepancy": "Pass 1 crawler detected general 'Start Free Trial' marketing copy, failing to identify that API provisioning is strictly restricted to enterprise sales agreements."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "LinkedIn Marketing APIs require developers to apply and get approved for Community Management or Marketing Developer Platform."
+      },
+      "status": "Corrected in Pass 2"
+    },
+    {
+      "id": 41,
+      "name": "Shopify",
+      "category": "Ecommerce",
+      "pass1_result": {
+        "access_type": "Self-serve (Partner Sandbox)",
+        "api_surface": "GraphQL & REST",
+        "mcp_status": "Official & Community Shopify MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve (Partner Sandbox)",
+        "api_surface": "GraphQL & REST",
+        "mcp_status": "Official & Community Shopify MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Shopify Admin API is fully accessible via free Partner accounts with both GraphQL and REST endpoints."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 44,
+      "name": "Salesforce Commerce Cloud",
+      "category": "Ecommerce",
+      "pass1_result": {
+        "access_type": "Self-serve (Trial Inferred)",
+        "api_surface": "REST (SCAPI / OCAPI)",
+        "mcp_status": "None",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Gated (Enterprise Contract)",
+        "api_surface": "REST (SCAPI / OCAPI)",
+        "mcp_status": "None",
+        "buildability": "Blocked (Enterprise Gated)",
+        "root_cause_of_discrepancy": "Pass 1 crawler detected general 'Start Free Trial' marketing copy, failing to identify that API provisioning is strictly restricted to enterprise sales agreements."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "SCAPI documentation specifies that access requires an Account Manager API Client tied to an active realm."
+      },
+      "status": "Corrected in Pass 2"
+    },
+    {
+      "id": 55,
+      "name": "Apify",
+      "category": "Data, SEO and Scraping",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Official Apify MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Official Apify MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Apify provides comprehensive REST v2 APIs and maintains an official Actors MCP server."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 58,
+      "name": "Sherlock",
+      "category": "Data, SEO and Scraping",
+      "pass1_result": {
+        "access_type": "Open Source (Self-serve)",
+        "api_surface": "No Public API",
+        "mcp_status": "Community CLI MCP Wrapper",
+        "buildability": "Blocked"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Open Source (Self-serve)",
+        "api_surface": "CLI / Python Module",
+        "mcp_status": "Community CLI MCP Wrapper",
+        "buildability": "Ready (CLI Wrapper)",
+        "root_cause_of_discrepancy": "Pass 1 flagged absence of HTTP endpoint as 'No API'; Verification Agent verified open-source CLI execution as local tool/MCP."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Sherlock is run via command line (`sherlock <username>`) without API keys."
+      },
+      "status": "Corrected in Pass 2"
+    },
+    {
+      "id": 61,
+      "name": "GitHub",
+      "category": "Developer, Infra and Data platforms",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST & GraphQL",
+        "mcp_status": "Official GitHub MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve",
+        "api_surface": "REST & GraphQL",
+        "mcp_status": "Official GitHub MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "GitHub REST & GraphQL APIs offer complete coverage with instant self-serve personal access tokens."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 70,
+      "name": "Sentry",
+      "category": "Developer, Infra and Data platforms",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "None",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Official Sentry MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Pass 1 regex scanned only vendor landing docs; Verification Agent discovered official MCP server hosted under organization's GitHub repository."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Sentry provides an official MCP server (`getsentry/sentry-mcp`) and comprehensive REST APIs."
+      },
+      "status": "Corrected in Pass 2"
+    },
+    {
+      "id": 71,
+      "name": "Notion",
+      "category": "Productivity and Project Management",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Official & Community Notion MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Official & Community Notion MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Notion API allows immediate bot token creation and supports database querying and block editing."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 73,
+      "name": "Linear",
+      "category": "Productivity and Project Management",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "None",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Self-serve",
+        "api_surface": "GraphQL",
+        "mcp_status": "Community Linear MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Pass 1 regex scanned only vendor landing docs; Verification Agent discovered official MCP server hosted under organization's GitHub repository."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Linear GraphQL API provides full CRUD coverage for software project management."
+      },
+      "status": "Corrected in Pass 2"
+    },
+    {
+      "id": 81,
+      "name": "Stripe",
+      "category": "Finance and Fintech",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Official Stripe Agent Toolkit & MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve",
+        "api_surface": "REST",
+        "mcp_status": "Official Stripe Agent Toolkit & MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Stripe offers instant sandbox keys and an official Agent Toolkit for AI integrations."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 90,
+      "name": "PitchBook",
+      "category": "Finance and Fintech",
+      "pass1_result": {
+        "access_type": "Self-serve (Trial Inferred)",
+        "api_surface": "REST & Direct Data Feeds",
+        "mcp_status": "None",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Gated (Enterprise Contract)",
+        "api_surface": "REST & Direct Data Feeds",
+        "mcp_status": "None",
+        "buildability": "Blocked (Financial Gate)",
+        "root_cause_of_discrepancy": "Pass 1 crawler detected general 'Start Free Trial' marketing copy, failing to identify that API provisioning is strictly restricted to enterprise sales agreements."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "PitchBook API access requires a specialized institutional data contract with sales consultation."
+      },
+      "status": "Corrected in Pass 2"
+    },
+    {
+      "id": 93,
+      "name": "Fathom",
+      "category": "AI, Research and Media-native",
+      "pass1_result": {
+        "access_type": "Self-serve",
+        "api_surface": "REST & Webhooks",
+        "mcp_status": "Community Fathom MCP",
+        "buildability": "Ready"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Direct Documentation Match",
+        "access_type": "Self-serve",
+        "api_surface": "REST & Webhooks",
+        "mcp_status": "Community Fathom MCP",
+        "buildability": "Ready",
+        "root_cause_of_discrepancy": "Passed automated verification on first pass with high confidence."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Fathom provides developer API endpoints for accessing recorded meeting transcripts and AI action items."
+      },
+      "status": "Accurate in Pass 1"
+    },
+    {
+      "id": 98,
+      "name": "Mermaid CLI",
+      "category": "AI, Research and Media-native",
+      "pass1_result": {
+        "access_type": "Open Source (Self-serve)",
+        "api_surface": "No Public API",
+        "mcp_status": "Official / Community Mermaid MCP",
+        "buildability": "Blocked"
+      },
+      "verification_loop_findings": {
+        "validation_trigger": "Deep Browser / Registry / Gating Verification",
+        "access_type": "Open Source (Self-serve)",
+        "api_surface": "CLI / Node.js Module",
+        "mcp_status": "Official / Community Mermaid MCP",
+        "buildability": "Ready (Local Tool Execution)",
+        "root_cause_of_discrepancy": "Pass 1 flagged absence of HTTP endpoint as 'No API'; Verification Agent verified open-source CLI execution as local tool/MCP."
+      },
+      "human_ground_truth": {
+        "verified": true,
+        "notes": "Mermaid CLI allows agents to render visual charts with zero API keys or external authentication."
+      },
+      "status": "Corrected in Pass 2"
+    }
+  ]
+}

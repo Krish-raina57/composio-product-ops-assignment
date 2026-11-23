@@ -1,0 +1,149 @@
+{
+  "total_apps": 100,
+  "auth_distribution": {
+    "Dual (OAuth2 + API Key / PAT)": 46,
+    "API Key / Token / Basic Auth Only": 39,
+    "OAuth 2.0 Only": 12,
+    "No Auth (CLI / Public)": 3
+  },
+  "buildability_distribution": {
+    "Ready": 73,
+    "Partially Ready": 18,
+    "Blocked": 9
+  },
+  "category_breakdown": {
+    "CRM and Sales": {
+      "total": 10,
+      "self_serve": 8,
+      "gated": 2,
+      "ready": 9,
+      "existing_mcp": 8,
+      "self_serve_pct": 80.0
+    },
+    "Support and Helpdesk": {
+      "total": 10,
+      "self_serve": 8,
+      "gated": 2,
+      "ready": 9,
+      "existing_mcp": 7,
+      "self_serve_pct": 80.0
+    },
+    "Communications and Messaging": {
+      "total": 10,
+      "self_serve": 8,
+      "gated": 2,
+      "ready": 10,
+      "existing_mcp": 9,
+      "self_serve_pct": 80.0
+    },
+    "Marketing, Ads, Email and Social": {
+      "total": 10,
+      "self_serve": 6,
+      "gated": 4,
+      "ready": 9,
+      "existing_mcp": 8,
+      "self_serve_pct": 60.0
+    },
+    "Ecommerce": {
+      "total": 10,
+      "self_serve": 6,
+      "gated": 4,
+      "ready": 8,
+      "existing_mcp": 7,
+      "self_serve_pct": 60.0
+    },
+    "Data, SEO and Scraping": {
+      "total": 10,
+      "self_serve": 7,
+      "gated": 3,
+      "ready": 9,
+      "existing_mcp": 7,
+      "self_serve_pct": 70.0
+    },
+    "Developer, Infra and Data platforms": {
+      "total": 10,
+      "self_serve": 10,
+      "gated": 0,
+      "ready": 10,
+      "existing_mcp": 10,
+      "self_serve_pct": 100.0
+    },
+    "Productivity and Project Management": {
+      "total": 10,
+      "self_serve": 10,
+      "gated": 0,
+      "ready": 10,
+      "existing_mcp": 10,
+      "self_serve_pct": 100.0
+    },
+    "Finance and Fintech": {
+      "total": 10,
+      "self_serve": 5,
+      "gated": 5,
+      "ready": 7,
+      "existing_mcp": 7,
+      "self_serve_pct": 50.0
+    },
+    "AI, Research and Media-native": {
+      "total": 10,
+      "self_serve": 6,
+      "gated": 4,
+      "ready": 10,
+      "existing_mcp": 8,
+      "self_serve_pct": 60.0
+    }
+  },
+  "top_blockers": [
+    {
+      "blocker": "Partner / Compliance Application Gate",
+      "count": 7,
+      "examples": [
+        "LinkedIn Ads",
+        "Google Ads Standard",
+        "WhatsApp Cloud Production",
+        "Consensus"
+      ]
+    },
+    {
+      "blocker": "Enterprise Contract / Sales Only",
+      "count": 6,
+      "examples": [
+        "DealCloud",
+        "PitchBook",
+        "Salesforce Commerce Cloud",
+        "Gladly",
+        "Waterfall.io",
+        "iPayX"
+      ]
+    },
+    {
+      "blocker": "Active Paid Corporate Subscription Required",
+      "count": 7,
+      "examples": [
+        "Brex",
+        "Ramp",
+        "GoHighLevel",
+        "SE Ranking",
+        "Ahrefs Enterprise",
+        "Squarespace",
+        "Aircall"
+      ]
+    },
+    {
+      "blocker": "No Public Documented API",
+      "count": 2,
+      "examples": [
+        "fanbasis",
+        "Otter AI (Official)"
+      ]
+    },
+    {
+      "blocker": "Financial Underwriting / KYC",
+      "count": 2,
+      "examples": [
+        "Paygent Connect",
+        "Amazon SP-API Vetting"
+      ]
+    }
+  ]
+}
